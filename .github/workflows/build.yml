@@ -22,13 +22,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # 使用官方 Gradle Action，它能自动处理环境和缓存
+      # 使用官方 Gradle Action，注意版本号必须加引号
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: 8.0 # 指定与你 properties 中一致的版本
+          gradle-version: "8.1.1" # 必须加引号，匹配你的 AGP 版本
 
-      # 如果项目中没有 gradlew，我们直接用系统安装的 gradle 命令
+      # 直接运行编译
       - name: Build with Gradle
         run: gradle assembleDebug --stacktrace
 
